@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Register</div>
+        <div class="panel-body">
+          <form class="form-horizontal" #form="ngForm" (submit)="onSubmit(form)">
+              {{ form.value | json }}
+              <ul class="list-group">
+                  <li class="list-group-item text-danger" *ngIf="!!name.errors?.required && name.touched">Full name is required.</li>
+                  <li class="list-group-item text-danger" *ngIf="!!email.errors?.required && email.touched">Email is required.</li>
+                  <li class="list-group-item text-danger" *ngIf="!!password.errors?.required && password.touched">Password is required.</li>
+                  <li class="list-group-item text-danger" *ngIf="!!password.errors?.minlength">Password must be more than 6 characters.</li>
+              </ul>
+            <div class="form-group">
+              <label for="name" class="control-label col-md-4">Full name</label>
+
+              <div class="col-md-6">
+                <input id="name" type="text" name="name" class="form-control" #name="ngModel" ngModel autofocus required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="control-label col-md-4">E-mail Address</label>
+
+              <div class="col-md-6">
+                <input id="email" type="email" name="email" class="form-control" #email="ngModel" ngModel required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-md-4 control-label">Password</label>
+
+              <div class="col-md-6">
+                <input type="password" name="password" class="form-control" #password="ngModel" ngModel required minlength="6">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-8 col-md-offset-4">
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+                  Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
